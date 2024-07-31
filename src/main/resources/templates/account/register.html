@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{account/layout::areas(~{::main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<main>
+		<div class="container_banner">
+		<form class="form_container" action="/account/registers" method="post">
+			<div class="logo_container"></div>
+			<div class="title_container">
+				<p class="title">Đăng Ký</p>
+				<span class="subtitle"> Bắt đầu với ứng dụng của chúng tôi,
+					chỉ cần tạo một tài khoản và tận hưởng trải nghiệm mua sắm. </span>
+			</div>
+			<br>
+			<div class="input_container">
+				<label class="input_label" for="email_field">Fullname</label> <input
+					placeholder="Fullname" name="fullname"
+					class="input_field_two" id="email_field" required>
+			</div>			
+			<div class="input_container">
+				<label class="input_label" for="email_field">Username</label> <input
+					placeholder="Username" name="username"
+					class="input_field_two" id="email_field" required>
+			</div>
+			<div class="input_container">
+				<label class="input_label" for="email_field">Email</label> <input
+					placeholder="name@mail.com" name="email" type="email"
+					class="input_field_two" id="email_field" required>
+			</div>
+			<div class="input_container">
+				<label class="input_label" for="password_field">Mật Khẩu</label> <input
+					placeholder="Password" name="passwords" type="password"
+					class="input_field_two" id="password_field" required>
+			</div>
+			<button type="submit" class="sign-in_btn">
+				<span>Đăng Ký</span>
+			</button>
+			<div class="input_container">
+				<div th:if="${successRegister} == 'true'" class="alert alert-success" role="alert">Đăng ký tài khoản thành công!</div>
+				<div th:if="${errorUsername} == 'true'" class="alert alert-danger" role="alert">Đăng ký tài khoản thất bại! (Username đã tồn tại)</div>
+			</div>
+			<div class="separator">
+				<hr class="line">
+				<span>Hoặc</span>
+				<hr class="line">
+			</div>
+ 			<a href="" title="Sign In" type="submit" class="sign-in_ggl">
+				<svg height="18" width="18" viewBox="0 0 32 32"
+					xmlns:xlink="http://www.w3.org/1999/xlink"
+					xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <path
+						d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z"
+						id="A"></path>
+                </defs>
+                <clipPath id="B">
+                  
+                </clipPath>
+                <g
+						transform="matrix(.727273 0 0 .727273 -.954545 -1.45455)">
+                  <path fill="#fbbc05" clip-path="url(#B)"
+						d="M0 37V11l17 13z"></path>
+                  <path fill="#ea4335" clip-path="url(#B)"
+						d="M0 11l17 13 7-6.1L48 14V0H0z"></path>
+                  <path fill="#34a853" clip-path="url(#B)"
+						d="M0 37l30-23 7.9 1L48 0v48H0z"></path>
+                  <path fill="#4285f4" clip-path="url(#B)"
+						d="M48 48L17 24l-4-3 35-10z"></path>
+                </g>
+              </svg>
+				<span> <img
+					src="https://img.icons8.com/fluency/48/null/google-logo.png"
+					style="width: 28px;" /> Đăng ký với Google
+				</span>
+			</a>
+			<button type="submit" class="sign-in_apl">
+				<span><img
+					src="https://img.icons8.com/fluency/48/null/facebook-new.png"
+					style="width: 28px;" /> Đăng ký với Facebook</span>
+			</button>
+			<p class="note">
+				Bạn đã có tài khoản? <a href="/account/login/form"
+					style="color: red; text-decoration: none;">Đăng Nhập</a>
+			</p>
+		</form>
+	</div>
+	</main>
+</body>
+</html>

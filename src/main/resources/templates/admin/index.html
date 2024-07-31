@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	th:replace="~{admin::areas(~{::main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<main id="main" class="main">
+        <div class="pagetitle">
+            <h1>Thống Kê</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Statistics.html">Trang Chủ</a></li>
+                    <li class="breadcrumb-item active">Thống Kê</li>
+                </ol>
+            </nav>
+        </div>
+        <section class="section dashboard">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="card mb-3" style="max-width: 540px; background-color:white">
+                            <div class="row g-0">
+                                <div class="col-md-4 card-">
+                                    <i class="fa-regular fa-eye fai" style="font-size: 30px; color: rgb(164, 164, 164);"></i>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="color: blue; font-weight: 600;">999</h5>
+                                        <p class="card-text" style="color: gray;">Lượt xem</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-4 card-">
+                                    <i class="fa-solid fa-cart-shopping fai" style="font-size: 30px; color: rgb(164, 164, 164);"></i>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="color: blue; font-weight: 600;">${luotMua }</h5>
+                                        <p class="card-text" style="color: gray;">Lượt bán</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-4 card-">
+                                    <i class="fa-regular fa-comments fai" style="font-size: 30px; color: rgb(164, 164, 164);"></i>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="color: blue; font-weight: 600;">100</h5>
+                                        <p class="card-text" style="color: gray;">Bình luận</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card text-bg-primary mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-4 card-">
+                                    <i class="fa-solid fa-money-bills fai" style="font-size: 30px;"></i>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="font-weight: 600;">${doanhThu }</h5>
+                                        <p class="card-text">Doanh thu</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Tên sản phẩm</th>
+                            <th scope="col">Đơn giá</th>
+                            <th scope="col">Tổng số lượng</th>
+                            <th scope="col">Tổng tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="item" items="${listTK }" varStatus="loop">
+                        <tr>
+                            <th scope="row">${loop.index+1 }</th>
+                            <td>${item.name }</td>
+                            <td>${item.price }</td>
+                            <td>${item.total_qty }</td>
+                            <td>${item.total_qty * item.price }</td>
+                        </tr>
+                      </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+</body>
+</html>

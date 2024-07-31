@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout::areas(~{::main})}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Đơn Hàng</title>
+</head>
+
+<body>
+    <main>
+        <!-- purchase order -->
+        <section class="shop_section layout_padding" style="margin-bottom: 100px;">
+            <div class="container">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="card w-75" style="background-color: #ffff;">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <img src="/icon/avatarNEW.png" alt="Ảnh đại diện" class="d-flex align-items-start" style="width: 50px; height: 50px; border-radius: 50%;">
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <p style="margin-bottom: 0px;"><strong>lucas</strong></p>
+                                            <i class="fa-solid fa-user-pen" style="color: #000000;"></i><a href="#" style="margin-left: 5px; font-size: 15px;"> Sửa Hồ Sơ</a>
+
+                                        </div>
+
+                                    </div>
+                                    <hr>
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" href="#">Tài khoản của tôi</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Đơn mua</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Kho Voucher</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-8" style="margin-left: -100px;">
+                            <div class="card w-100 h-auto">
+                                <div class="card-body w-100 h-auto" style="background-color: #ffff;">
+                                    <div id="tabs" class="">
+                                        <nav>
+                                            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Tất cả</a>
+                                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Chờ thanh toán</a>
+                                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Đang giao</a>
+                                                <a class="nav-item nav-link" id="nav-tab" data-toggle="tab" href="#nav-tab" role="tab" aria-controls="nav-about" aria-selected="false">Hoàn thành</a>
+                                                <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">Đã hủy</a>
+                                            </div>
+                                        </nav>
+                                        <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                                <div class="each" th:each="order : ${order}">
+                                                    <div class="panle-header">
+                                                        MÃ ĐƠN HÀNG <span th:text="${order.orders_id}"></span>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="row" style="padding: 20px;">
+
+                                                            <img src="/img/f1.png" alt="" class="w-25">
+                                                            <div class="col d-flex align-items-center">
+                                                                <div class="text-title" th:text="${order.orders_address}"></div>
+                                                            </div>
+                                                            <div class="col d-flex align-items-center">
+                                                               <strong class="text-title" th:text="${order.orders_time}"></strong>
+                                                            </div>
+                                                             <div class="col d-flex align-items-center justify-content-center">
+                                                                <a th:href="@{|/order/detail/${order.orders_id}|}" class="btn btn-primary h-25">
+                                                                    <i class="fa-solid fa-magnifying-glass"></i> Xem chi tiết
+                                                                </a>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                                <div class="each">
+                                                    <div class="panle-header">
+                                                        Header
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="row" style="padding: 20px;">
+
+                                                            <img src="/img/f1.png" alt="" class="w-25">
+                                                            <div class="col d-flex align-items-center">
+                                                                <div class="text-title">Sản phẩm demo</div>
+                                                            </div>
+                                                            <div class="col d-flex align-items-center">
+                                                                <strong class="text-title">Đang chờ xác nhận đơn hàng</strong>
+                                                            </div>
+                                                            <div class="col d-flex align-items-center justify-content-center">
+                                                                <button class="btn btn-primary h-25" type="button">Hủy Đơn</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                                <div class="each">
+                                                    <div class="panle-header">
+                                                        Header
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="row" style="padding: 20px;">
+
+                                                            <img src="/img/f1.png" alt="" class="w-25">
+                                                            <div class="col d-flex align-items-center">
+                                                                <div class="text-title">Sản phẩm demo</div>
+                                                            </div>
+                                                            <div class="col d-flex align-items-center">
+                                                                <strong class="text-title">Đang chờ xác nhận đơn hàng</strong>
+                                                            </div>
+                                                            <div class="col d-flex align-items-center justify-content-center">
+                                                                <button class="btn btn-primary h-25" type="button">Hủy Đơn</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="nav-tab" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                                <div class="each">
+                                                    <div class="panle-header">
+                                                        Header
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="row" style="padding: 20px;">
+
+                                                            <img src="/img/f1.png" alt="" class="w-25">
+                                                            <div class="col d-flex align-items-center">
+                                                                <div class="text-title">Sản phẩm demo</div>
+                                                            </div>
+                                                            <div class="col d-flex align-items-center">
+                                                                <strong class="text-title">Đang chờ xác nhận đơn hàng</strong>
+                                                            </div>
+                                                            <div class="col d-flex align-items-center justify-content-center">
+                                                                <button class="btn btn-primary h-25" type="button">Hủy Đơn</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
+                                                <div class="each">
+                                                    <div class="panle-header">
+                                                        Header
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="row" style="padding: 20px;">
+
+                                                            <img src="/img/f1.png" alt="" class="w-25">
+                                                            <div class="col d-flex align-items-center">
+                                                                <div class="text-title">Sản phẩm demo</div>
+                                                            </div>
+                                                            <div class="col d-flex align-items-center">
+                                                                <strong class="text-title">Đang chờ xác nhận đơn hàng</strong>
+                                                            </div>
+                                                            <div class="col d-flex align-items-center justify-content-center">
+                                                                <button class="btn btn-primary h-25" type="button">Hủy Đơn</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- purchase order -->
+    </main>
+</body>
+
+</html>

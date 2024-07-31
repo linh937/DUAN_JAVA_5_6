@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product List</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Danh sách sản phẩm</h1>
+        <div class="row" th:each="p : ${items}">
+            <div class="col-sm-6 col-xl-3">
+                <div class="box">
+                    <a th:href="@{|/home/details/${p.product_id}|}">
+                        <div class="img-box">
+                            <img th:src="@{|/img/${p.product_img}|}" alt="Product Image">
+                        </div>
+                        <div class="detail-box">
+                            <h6 th:text="${p.product_name}"></h6>
+                            <h6>
+                                Giá: 
+                                <span th:text="${p.product_price}"></span>
+                            </h6>
+                        </div>
+                        <div class="new">
+                            <span>Mới</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

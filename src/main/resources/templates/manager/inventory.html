@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	th:replace="~{admin::areas(~{::main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<main id="main" class="main">
+		<div class="pagetitle">
+			<h1>Quản lí kho</h1>
+			<nav>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/Statistics.html">Trang
+							Chủ</a></li>
+					<li class="breadcrumb-item"><a href="/Statistics.html">Sản
+							Phẩm</a></li>
+					<li class="breadcrumb-item active">Kho hàng</li>
+				</ol>
+			</nav>
+		</div>
+		<section class="section dashboard">
+			<div class="row">
+				<div class="col-xl-12">
+
+					<table class="table table-dark table-striped table-hover">
+						<thead>
+							<tr>
+								<th scope="col">Mã kho</th>
+								<th scope="col">Tên sản phẩm</th>
+								<th scope="col">Số lượng</th>	
+								<th scope="col"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="item" items="${listInventory}">
+								<tr>
+									<th>${item.id}</th>
+									<td>${item.product.product_name}</td>
+									<td>${item.quantity}</td>
+									<td><a href="/admin/inventory/edit?id=${item.id }" style="text-decoration: none;">Cập
+											nhật</a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+
+					<div class="card">
+						<div class="card-body pt-3">
+							<ul class="nav nav-tabs nav-tabs-bordered">
+								<li class="nav-item">
+									<button class="nav-link active" data-bs-toggle="tab"
+										data-bs-target="#addProduct">Cập nhật kho hàng</button>
+								</li>
+							</ul>
+							<div class="tab-content pt-2">
+								<div class="tab-pane fade show active pt-3" id="addProduct">
+									<form action="/admin/inventory/update" method="post">
+
+										<input type="hidden" name="idInventory" value="${itemInven.id}">
+										<div class="row mb-3">
+											<label for="fullName"
+												class="col-md-4 col-lg-3 col-form-label">Tên Sản
+												Phẩm</label>
+											<div class="col-md-8 col-lg-9">
+												<input name="product_name"
+													value="${itemInven.product.product_name}" type="text"
+													class="form-control" id="fullName" readonly="readonly"
+													placeholder="Tên sản phẩm" />
+											</div>
+										</div>
+
+										<div class="row mb-3">
+											<label for="about" class="col-md-4 col-lg-3 col-form-label">Số lượng</label>
+											<div class="col-md-8 col-lg-9">
+												<input name="quantity"
+													value="${itemInven.quantity}" min="0" class="form-control"
+													type="number" id="about"  />
+											</div>
+										</div>
+
+										<div class="row mb-3">
+											<label for="Country" class="col-md-4 col-lg-3 col-form-label"></label>
+											<div class="col-md-8 col-lg-9">
+												<button type="submit" 
+													class="btn btn-primary">Cập nhật</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+	</main>
+</body>
+</html>

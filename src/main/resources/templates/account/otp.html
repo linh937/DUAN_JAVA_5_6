@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{account/layout2::areas(~{::main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<main>
+		<form class="form-OTP" action="/account/OTP" method="post">
+			<div class="title-OTP">OTP</div>
+			<div class="title-OTP">Mã xác nhận</div>
+			<p class="message-OTP">Chúng tôi đã gửi mã xác minh đến email của
+				bạn!</p>
+			<div class="inputs-OTP">
+				<input id="input1-OTP" type="text" name="numberOne" maxlength="1"> <input
+					id="input2-OTP" type="text" name="numberTwo" maxlength="1"> <input
+					id="input3-OTP" type="text" name="numberThree" maxlength="1"> <input
+					id="input4-OTP" type="text" name="numberFour" maxlength="1">
+			</div>
+			<button class="action-OTP">Xác minh tôi</button>
+			<div class="inputs-OTP">
+				<!-- <c:if test="${errorNull == true}">
+						<div class="alert alert-danger" role="alert">Mã OTP không đúng!</div>
+					</c:if> -->
+			</div>
+		</form>
+	</main>
+</body>
+</html>

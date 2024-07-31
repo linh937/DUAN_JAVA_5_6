@@ -1,0 +1,57 @@
+<div xmlns:th="http://www.thymeleaf.org" th:replace="~{layout::areas(~{::main})}">
+    <main>
+        <div class="card card-primary" th:object="${order}">
+    <div class="card-header">Thông tin đơn hàng</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="form-group col-sm-3">
+                <div>Mã đơn hàng:</div>
+                <input th:field="*{orders_id}" class="form-control" readonly>
+            </div>
+            <div class="form-group col-sm-3">
+                <div>Họ và tên:</div>
+                <input th:field="*{fullname}" class="form-control" readonly>
+            </div>
+            <div class="form-group col-sm-3">
+                <div>Số điện thoại:</div>
+                <input th:field="*{phone}" class="form-control" readonly>
+            </div>
+            <div class="form-group col-sm-3">
+                <div>Ngày đặt hàng:</div>
+                <input th:field="*{orders_time}" class="form-control" readonly>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <div>Địa chỉ:</div>
+                <textarea th:field="*{orders_address}" class="form-control" readonly></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div class="card card-primary">
+            <div class="card-header">Danh sách đơn hàng</div>
+            <table class="table table-striped">
+                <thead class="bg-dark text-white" style="font-size:14px">
+                    <tr>
+                        <th>Mã đơn hàng</th>
+                        <th>Tên</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Tổng tiền</th>
+                    </tr>
+                </thead>
+                <tbody style="font-size:14px">
+                    <tr th:each="detail: ${detailOrder}">
+                        <th style="vertical-align:middle;">[[${detail.product.product_id}]]</th>
+                        <td style="vertical-align:middle;">[[${detail.product.product_name}]]</td>
+                        <td style="vertical-align:middle;">[[${detail.price}]]</td>
+                        <td style="vertical-align:middle;">[[${detail.quantity}]]</td>
+                        <td style="vertical-align:middle;">[[${detail.quantity*detail.price}]]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
